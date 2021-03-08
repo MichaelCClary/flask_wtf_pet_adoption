@@ -54,7 +54,7 @@ def edit_pet(id):
         form.photo_url.data = form.photo_url.data if len(
             form.photo_url.data) > 0 else default_url
         pet.name = form.name.data
-        pet.species = pet.species.data
+        pet.species = form.species.data
         pet.photo_url = form.photo_url.data
         pet.notes = form.notes.data
         pet.available = form.available.data
