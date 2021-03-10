@@ -15,4 +15,4 @@ class PetForm(FlaskForm):
     age = IntegerField("Age", widget=NumberInput(
         min=0, max=30, step=1), validators=[Optional()])
     notes = TextAreaField("Notes")
-    available = BooleanField("Available")
+    available = BooleanField("Available", default=True)

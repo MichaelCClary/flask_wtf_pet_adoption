@@ -38,7 +38,7 @@ def add_pet():
         photo_url = photo_url if len(photo_url) > 0 else None
 
         new_pet = Pet(name=name, species=species, age=age,
-                      photo_url=photo_url, notes=notes)
+                      photo_url=photo_url, notes=notes, available=available)
         db.session.add(new_pet)
         db.session.commit()
         return redirect("/")
@@ -53,8 +53,6 @@ def edit_pet(id):
     if form.validate_on_submit():
         form.photo_url.data = form.photo_url.data if len(
             form.photo_url.data) > 0 else default_url
-        pet.name = form.name.data
-        pet.species = form.species.data
         pet.photo_url = form.photo_url.data
         pet.notes = form.notes.data
         pet.available = form.available.data

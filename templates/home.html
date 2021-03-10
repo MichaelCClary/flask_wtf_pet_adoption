@@ -11,16 +11,18 @@
         {% for pet in pets %}
         <div class="col justify-content-center">
             <h3 class="text-center">{{pet.name}}</h3>
-            <img src="{{pet.photo_url}}" alt="{{pet.name}} photo" class="rounded mx-auto d-block"">
+            <img src="{{pet.photo_url}}" alt="{{pet.name}} photo" class="rounded mx-auto d-block home_img">
             {%if pet.available %}
             <div class=" text-center alert alert-success">Available
+            </div>
+            {%else%}
+            <div class="text-center alert alert-secondary">Not available</div>
+            {%endif%}
+            <div>
+                <a href="/{{pet.id}}"><Button class="btn btn-success mx-auto d-block">{{pet.name}} Details</Button></a>
+            </div>
         </div>
-        {%else%}
-        <div class="text-center alert alert-secondary">Not available</div>
-        {%endif%}
-        <a href="/{{pet.id}}"><Button class="btn btn-success mx-auto d-block">{{pet.name}} Details</Button></a>
+        {% endfor%}
     </div>
-    {% endfor%}
-</div>
 </div>
 {% endblock %}

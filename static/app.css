@@ -1,5 +1,17 @@
-/* img {
-    height: 200px;
-    width: 250px;
+.home_img {
+    height: 300px;
+    width: 300px;
     display: inline-block;
-} */
+}
+
+.detail_img {
+    height: 500px;
+    width: 500px;
+    display: inline-block;
+}
+
+.edit-form {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 10px;
+}

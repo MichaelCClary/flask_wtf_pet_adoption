@@ -3,34 +3,52 @@
 
 {% block content%}
 <div class="container">
-    <h1 class="display-2 text-center">Pet Details</h1>
-    <p>Name: {{pet.name}}</p>
-    <img src="{{pet.photo_url}}" alt="{{pet.name}}">
-    <p>Species: {{pet.species}}</p>
+    <h1 class="display-2 text-center">{{pet.name}} Details</h1>
+    <img class="rounded mx-auto d-block detail_img" src="{{pet.photo_url}}" alt="{{pet.name}}">
+    <h3 class="text-center">Species: {{pet.species}}</h3>
     {%if pet.age%}
-    <p>Age: {{pet.age}}</p>
+    <h3 class="text-center">Age: {{pet.age}}</h3>
     {%endif%}
+    <div class="container edit-form">
+        <h4>Edit {{pet.name}} Details </h4>
+        <form method="POST">
+            {{form.hidden_tag()}}
+            <input type="hidden" name=name value={{pet.name}}>
+            {{form.photo_url.label(class_="form-group")}}
+            {{form.photo_url(class_="form-control")}}
 
-    <form method="POST">
-        {{form.hidden_tag()}}
-
-        <div class="container">
-            {% for field in form
-            if field.widget.input_type != 'hidden'%}
-
-            {{field.label(class_="form-group")}}
-            {{field(class_="form-control")}}
-
-            {% for err in field.errors%}
+            {% for err in form.photo_url.errors%}
             <div>
                 {{err}}
             </div>
             {% endfor%}
 
+            {{form.notes.label(class_="form-group")}}
+            {{form.notes(class_="form-control")}}
 
+            {% for err in form.notes.errors%}
+            <div>
+                {{err}}
+            </div>
             {% endfor%}
-            <button class="btn btn-primary btn-lg">Submit</button>
-        </div>
+
+            {{form.age.label(class_="form-group")}}
+            {{form.age(class_="form-control")}}
+
+            {% for err in form.age.errors%}
+            <div>
+                {{err}}
+            </div>
+            {% endfor%}
+
+            {{form.available.label(class_="form-group")}}
+            {{form.available(class_="form-control")}}
+            <div>
+                <a href="/"><button type="button" class="btn btn-secondary btn-lg">Cancel</button></a>
+                <button class="btn btn-primary btn-lg">Submit</button>
+            </div>
+    </div>
     </form>
+    <p></p>
 </div>
 {% endblock %}
